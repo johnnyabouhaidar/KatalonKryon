@@ -1,9 +1,9 @@
 import pandas as pd
-
+import random
 from openpyxl import workbook
 from openpyxl import load_workbook
 
-file_path = 'NWC_DS.xlsx'
+file_path = 'generated_output.xlsx'
 output_file_path = 'NOMAC_Work Order Manangement.xlsx'
 
 final_script = []
@@ -11,6 +11,36 @@ script=[]
 
 num_rows_to_read = 1
 
+
+input_excel_df = pd.read_excel(file_path,sheet_name="Sheet1")
+
+names = input_excel_df.iloc[:,0]
+lastnames = input_excel_df.iloc[:,1]
+comments = input_excel_df.iloc[:,2]
+files = input_excel_df.iloc[:,3]
+'''
+names = ["Johnny","","name3","name4","name5"]
+lastnames = ["Abou Haidar","","lname3","lname4","lname5"]
+comments = ["sample comment1","test","hello",""]
+files='''
+
+#print(random.choice(names))
+#print(random.choice(lastnames))
+
+final_result = []
+
+for i in range (100):
+    final_result.append([random.choice(names),random.choice(lastnames),random.choice(comments),random.choice(files)])
+
+
+print(final_result)
+final_df=pd.DataFrame(final_result,columns=["name","fname","comment","file2upload"])
+print(final_df)
+
+#final_df.to_excel(file_path,index=False,sheet_name="Sheet1")
+with pd.ExcelWriter(file_path, engine='openpyxl', mode='a') as writer:
+    writer.book = load_workbook(file_path)
+    final_df.to_excel(writer, sheet_name='Sheet1', index=False)
 
 types_names = pd.read_excel(file_path,sheet_name="Sheet2", nrows=num_rows_to_read).columns.tolist()
 Field_names = pd.read_excel(file_path,sheet_name="Sheet1", nrows=num_rows_to_read).columns.tolist()
