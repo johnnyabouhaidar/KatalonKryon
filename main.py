@@ -3,6 +3,7 @@ import random
 from openpyxl import workbook
 from openpyxl import load_workbook
 
+input_file_path = 'input_output.xlsx'
 file_path = 'generated_output.xlsx'
 output_file_path = 'NOMAC_Work Order Manangement.xlsx'
 
@@ -12,7 +13,7 @@ script=[]
 num_rows_to_read = 1
 
 
-input_excel_df = pd.read_excel(file_path,sheet_name="Sheet1")
+input_excel_df = pd.read_excel(input_file_path,sheet_name="Sheet1")
 
 names = input_excel_df.iloc[:,0]
 lastnames = input_excel_df.iloc[:,1]
@@ -34,15 +35,17 @@ for i in range (100):
 
 
 print(final_result)
-final_df=pd.DataFrame(final_result,columns=["name","fname","comment","file2upload"])
+final_df=pd.DataFrame(final_result,columns=["first","Lname","comment","file2upload"])
 print(final_df)
 
 #final_df.to_excel(file_path,index=False,sheet_name="Sheet1")
-with pd.ExcelWriter(file_path, engine='openpyxl', mode='a') as writer:
-    writer.book = load_workbook(file_path)
-    final_df.to_excel(writer, sheet_name='Sheet1', index=False)
 
-types_names = pd.read_excel(file_path,sheet_name="Sheet2", nrows=num_rows_to_read).columns.tolist()
+
+
+
+final_df.to_excel(file_path,index=False)
+
+types_names = pd.read_excel(input_file_path,sheet_name="Sheet2", nrows=num_rows_to_read).columns.tolist()
 Field_names = pd.read_excel(file_path,sheet_name="Sheet1", nrows=num_rows_to_read).columns.tolist()
 
 result_dict = dict(zip(types_names, Field_names))
@@ -59,15 +62,19 @@ for res in result_dict.keys():
 
 
 
+
 df = pd.read_excel(file_path)
 
 for index, row in df.iterrows():
     singleTC=[]
     for case in script:
+        
         for ph in Field_names:
+            
             if ph in case:
-                singleTC.append(case.replace("%{0}%".format(ph),str(row[ph])))    
-
+                singleTC.append(case.replace("%{0}%".format(ph),str(row[ph])))   
+                 
+    
     final_script.append(singleTC)
 
 wb = load_workbook(output_file_path)
