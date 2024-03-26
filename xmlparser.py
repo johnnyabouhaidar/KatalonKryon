@@ -10,7 +10,7 @@ def get_element_data(file):
     soup = BeautifulSoup(html, 'html.parser')
 
     # Define the tag you want to find
-    tag_to_find = ['input','textarea']
+    tag_to_find = ['input','textarea','a']
     class_to_find = 'name'
 
     # Find all tags with the specified tag and class

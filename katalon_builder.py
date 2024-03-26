@@ -39,6 +39,8 @@ for idx,typee in enumerate(types_names):
         final_result=final_result+"WebUI.{0}(findTestObject('{1}'),'{2}')\n\n".format("setText","Object Repository/CurrentApplication/CurrentForm/textarea_{0}".format(field_names[idx]),samples[idx])        
     if "File" in typee:
         final_result=final_result+"WebUI.{0}(findTestObject('{1}'),'{2}')\n\n".format("uploadFile","Object Repository/CurrentApplication/CurrentForm/input_{0}".format(field_names[idx]),samples[idx].replace("\\","\\\\"))
+    if "Button" in typee:
+        final_result=final_result+"WebUI.{0}(findTestObject('{1}'))\n\n".format("click","Object Repository/CurrentApplication/CurrentForm/input_{0}".format(field_names[idx]),samples[idx])        
     f = open(r"result\CurrentApplication\CurrentForm\input_{0}.rs".format(field_names[idx]), "w")
     try:
         f.write(web_element_template.format("input_{0}".format(field_names[idx]),UI_Objects[field_names[idx]]))

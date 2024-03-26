@@ -32,4 +32,6 @@ WebUI.setText(findTestObject('Object Repository/CurrentApplication/CurrentForm/t
 
 WebUI.uploadFile(findTestObject('Object Repository/CurrentApplication/CurrentForm/input_Upload Document'),'C:\\Users\\johnny.abouhaidar\\Desktop\\myfiles\\katalon\\Test Run Report 26.pdf')
 
+WebUI.click(findTestObject('Object Repository/CurrentApplication/CurrentForm/input_Submit'),'nan')
+
 WebUI.closeBrowser()
