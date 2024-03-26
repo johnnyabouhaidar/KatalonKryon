@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='_d070228d4d634f46a0c3021d9270906c']</value>
+         <value>//input[@id='00000000-0000-0000-0000-000000000000_37eb2020-8d03-1cf3-4132-e76b4c261840_TextArea']</value>
       </entry>
 
    </selectorCollection>

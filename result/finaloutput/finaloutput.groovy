@@ -28,7 +28,7 @@ WebUI.setText(findTestObject('Object Repository/CurrentApplication/CurrentForm/i
 
 WebUI.setText(findTestObject('Object Repository/CurrentApplication/CurrentForm/input_Last Name'),'Smith')
 
-WebUI.setText(findTestObject('Object Repository/CurrentApplication/CurrentForm/input_Comments'),'hello')
+WebUI.setText(findTestObject('Object Repository/CurrentApplication/CurrentForm/textarea_Comments'),'hello')
 
 WebUI.uploadFile(findTestObject('Object Repository/CurrentApplication/CurrentForm/input_Upload Document'),'C:\\Users\\johnny.abouhaidar\\Desktop\\myfiles\\katalon\\Test Run Report 26.pdf')
 

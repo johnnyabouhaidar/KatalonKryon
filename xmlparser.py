@@ -17,14 +17,20 @@ def get_element_data(file):
     items = soup.find_all(tag_to_find)
 
     # List to store the results
-    ids = []
+    ids = {}
 
     # Iterate through each found item and extract the text
     for item in items:
-        ids.append(item["id"])
+        if item["id"]!=item["name"]:
+           
+            #ids.append({item["name"]:item["id"]})
+            ids[item["name"]]=item["id"]
 
     # Print the results
     print(ids)
+    return ids
+    '''
+    print("")
 
     tag_to_find=['span']
     items = soup.find_all(tag_to_find)
@@ -39,11 +45,13 @@ def get_element_data(file):
             names.append(item['id'])
 
     print(names)
+    print("")
 
     combined_dict = dict(zip(names, ids))
 
     print(combined_dict)
     return combined_dict
-
-get_element_data("form.html")
+'''
+if __name__=='__main__':
+    get_element_data("form.html")
 

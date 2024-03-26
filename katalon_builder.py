@@ -40,7 +40,10 @@ for idx,typee in enumerate(types_names):
     if "File" in typee:
         final_result=final_result+"WebUI.{0}(findTestObject('{1}'),'{2}')\n\n".format("uploadFile","Object Repository/CurrentApplication/CurrentForm/input_{0}".format(field_names[idx]),samples[idx].replace("\\","\\\\"))
     f = open(r"result\CurrentApplication\CurrentForm\input_{0}.rs".format(field_names[idx]), "w")
-    f.write(web_element_template.format("input_{0}".format(field_names[idx]),UI_Objects[field_names[idx]]))
+    try:
+        f.write(web_element_template.format("input_{0}".format(field_names[idx]),UI_Objects[field_names[idx]]))
+    except:
+        pass
 
 final_result=final_result+"WebUI.closeBrowser()"
 print(final_result)
